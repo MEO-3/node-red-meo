@@ -72,6 +72,7 @@ const concatEditor = {
         "ui/tab-help.js",
         "ui/tab-config.js",
         "ui/tab-context.js",
+        "ui/meo/tab-meo.js",
         "ui/palette-editor.js",
         "ui/editor.js",
         "ui/editors/panes/*.js",
