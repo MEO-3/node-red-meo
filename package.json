@@ -17,9 +17,11 @@
         "lint": "eslint packages/node_modules/@node-red/editor-client/src/js",
         "lint:fix": "eslint --fix packages/node_modules/@node-red/editor-client/src/js",
         "verify-deps": "node scripts/verify-package-dependencies.js",
-        "mocha": "mocha 'test/unit/_spec.js' 'test/unit/**/*_spec.js' 'test/nodes/**/*_spec.js'",
-        "mocha:core": "mocha 'test/unit/_spec.js' 'test/unit/**/*_spec.js'",
-        "mocha:nodes": "mocha 'test/nodes/**/*_spec.js'",
+        "mocha-bad": "mocha 'test/nodes/core/network/21-mqtt_spec.js'",
+        "mocha-mqtt": "mocha \"test/nodes/core/network/21-mqtt_spec.js\"",
+        "mocha": "mocha \"test/unit/_spec.js\" \"test/unit/**/*_spec.js\" \"test/nodes/**/*_spec.js\"",
+        "mocha:core": "mocha \"test/unit/_spec.js\" \"test/unit/**/*_spec.js\"",
+        "mocha:nodes": "mocha \"test/nodes/**/*_spec.js\"",
         "coverage": "nyc npm run mocha",
         "coverage:core": "nyc --exclude=packages/node_modules/@node-red/editor-client/** --exclude=packages/node_modules/@node-red/nodes/** npm run mocha:core",
         "coverage:nodes": "nyc npm run mocha:nodes",
@@ -133,8 +135,5 @@
     },
     "engines": {
         "node": ">=22.9"
-    },
-    "overrides": {
-        "serialize-javascript@<7.0.7": "7.0.7"
     }
 }
