@@ -14,6 +14,38 @@
 
 </div>
 
+## About this fork
+
+This is the **MEO 3** fork of Node-RED. It is upstream Node-RED plus the editor and node set for
+[MEO 3](https://github.com/MEO-3), a local-first IoT platform for STEAM education: an ESP32
+device is provisioned over BLE by the MEO gateway (`meo-open-service`), then automated here —
+without a child ever meeting MQTT, topics or capability ids.
+
+Everything MEO ships inside this repository. There is nothing extra to install.
+
+| What | Where |
+| --- | --- |
+| **MEO sidebar** — device list, rename/delete, BLE provisioning wizard | `packages/node_modules/@node-red/editor-client/src/js/ui/meo/` |
+| **MEO nodes** — `meo-gateway` (config), `meo-command` | `packages/node_modules/@node-red/nodes/core/meo/` |
+
+The nodes appear in the palette under **MEO**:
+
+- **`meo-gateway`** — where the MEO gateway runs (host + HTTP port, `7070` by default). The
+  editor reaches the gateway through the Node-RED runtime, so `localhost` means the machine
+  Node-RED runs on even when the editor is open on another computer.
+- **`meo-command`** — sends a capability command to a device and outputs the device's own reply.
+  The capability list is read live from the gateway and filtered to what that device declared
+  when it was provisioned, so you pick "Built-in LED", not `65281`. Values may come from
+  `msg.payload`; booleans become `1`/`0`.
+
+A running `meo-open-service` gateway is required — the nodes talk to its HTTP API and never to
+devices directly. See `meo-3-open-service/docs/mqtt_messaging.md` for the device protocol and
+`docs/editor-ui-customization.md` for how the editor UI is customised.
+
+> [!NOTE]
+> `node-red-contrib-meo` is retired. Its nodes spoke a protocol MEO 3 no longer uses; the node
+> set above replaces it.
+
 ## Quick Start
 
 Check out https://nodered.org/docs/getting-started/ for full instructions on getting
@@ -47,8 +79,8 @@ If you want to run the latest code from git, here's how to get started:
 
 1. Clone the code:
 
-        git clone https://github.com/node-red/node-red.git
-        cd node-red
+        git clone https://github.com/MEO-3/node-red-meo.git
+        cd node-red-meo
 
 2. Install the node-red dependencies
 
