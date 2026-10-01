@@ -18,7 +18,7 @@
 
 This is the **MEO 3** fork of Node-RED. It is upstream Node-RED plus the editor and node set for
 [MEO 3](https://github.com/MEO-3), a local-first IoT platform for STEAM education: an ESP32
-device is provisioned over BLE by the MEO gateway (`meo-open-service`), then automated here —
+device is provisioned over BLE by the MEO gateway (`meo-edge`), then automated here —
 without a child ever meeting MQTT, topics or capability ids.
 
 Everything MEO ships inside this repository. There is nothing extra to install.
@@ -38,8 +38,8 @@ The nodes appear in the palette under **MEO**:
   when it was provisioned, so you pick "Built-in LED", not `65281`. Values may come from
   `msg.payload`; booleans become `1`/`0`.
 
-A running `meo-open-service` gateway is required — the nodes talk to its HTTP API and never to
-devices directly. See `meo-3-open-service/docs/mqtt_messaging.md` for the device protocol and
+A running `meo-edge` gateway is required — the nodes talk to its HTTP API and never to
+devices directly. See `meo-edge/docs/mqtt_messaging.md` for the device protocol and
 `docs/editor-ui-customization.md` for how the editor UI is customised.
 
 > [!NOTE]
